@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="corrusys_asnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ASN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="EmpresaId" Type="int" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Peso" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaEnvio" Type="datetime" Nullable="false" />
+          <Property Name="NumeroSerie" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NumeroFactura" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DescripcionProducto" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASN_Reimpresion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASNId" Type="int" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Identificador" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Identificador" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="20" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <Association Name="FK__ASN__ClienteId__403A8C7D">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN__EmpresaId__412EB0B6">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN__UsuarioId__4222D4EF">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN_Reimp__ASNId__45F365D3">
+          <End Role="ASN" Type="Self.ASN" Multiplicity="1" />
+          <End Role="ASN_Reimpresion" Type="Self.ASN_Reimpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASN">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN_Reimpresion">
+              <PropertyRef Name="ASNId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN_Reimp__Usuar__46E78A0C">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="ASN_Reimpresion" Type="Self.ASN_Reimpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN_Reimpresion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="corrusys_asnModelStoreContainer">
+          <EntitySet Name="ASN" EntityType="Self.ASN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASN_Reimpresion" EntityType="Self.ASN_Reimpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ASN__ClienteId__403A8C7D" Association="Self.FK__ASN__ClienteId__403A8C7D">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN__EmpresaId__412EB0B6" Association="Self.FK__ASN__EmpresaId__412EB0B6">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN__UsuarioId__4222D4EF" Association="Self.FK__ASN__UsuarioId__4222D4EF">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN_Reimp__ASNId__45F365D3" Association="Self.FK__ASN_Reimp__ASNId__45F365D3">
+            <End Role="ASN" EntitySet="ASN" />
+            <End Role="ASN_Reimpresion" EntitySet="ASN_Reimpresion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN_Reimp__Usuar__46E78A0C" Association="Self.FK__ASN_Reimp__Usuar__46E78A0C">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="ASN_Reimpresion" EntitySet="ASN_Reimpresion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="corrusys_asnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ASN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Peso" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Lote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumeroSerie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumeroFactura" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescripcionProducto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__ASN__ClienteId__403A8C7D" FromRole="ASN" ToRole="Cliente" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__ASN__EmpresaId__412EB0B6" FromRole="ASN" ToRole="Empresa" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__ASN__UsuarioId__4222D4EF" FromRole="ASN" ToRole="Usuario" />
+          <NavigationProperty Name="ASN_Reimpresion" Relationship="Self.FK__ASN_Reimp__ASNId__45F365D3" FromRole="ASN" ToRole="ASN_Reimpresion" />
+        </EntityType>
+        <EntityType Name="ASN_Reimpresion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASNId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ASN" Relationship="Self.FK__ASN_Reimp__ASNId__45F365D3" FromRole="ASN_Reimpresion" ToRole="ASN" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__ASN_Reimp__Usuar__46E78A0C" FromRole="ASN_Reimpresion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ASN" Relationship="Self.FK__ASN__ClienteId__403A8C7D" FromRole="Cliente" ToRole="ASN" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ASN" Relationship="Self.FK__ASN__EmpresaId__412EB0B6" FromRole="Empresa" ToRole="ASN" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Rol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="ASN" Relationship="Self.FK__ASN__UsuarioId__4222D4EF" FromRole="Usuario" ToRole="ASN" />
+          <NavigationProperty Name="ASN_Reimpresion" Relationship="Self.FK__ASN_Reimp__Usuar__46E78A0C" FromRole="Usuario" ToRole="ASN_Reimpresion" />
+        </EntityType>
+        <Association Name="FK__ASN__ClienteId__403A8C7D">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN__EmpresaId__412EB0B6">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN__UsuarioId__4222D4EF">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN_Reimp__ASNId__45F365D3">
+          <End Role="ASN" Type="Self.ASN" Multiplicity="1" />
+          <End Role="ASN_Reimpresion" Type="Self.ASN_Reimpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASN">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN_Reimpresion">
+              <PropertyRef Name="ASNId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASN_Reimp__Usuar__46E78A0C">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="ASN_Reimpresion" Type="Self.ASN_Reimpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN_Reimpresion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="corrusys_asnEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ASN" EntityType="Self.ASN" />
+          <EntitySet Name="ASN_Reimpresion" EntityType="Self.ASN_Reimpresion" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__ASN__ClienteId__403A8C7D" Association="Self.FK__ASN__ClienteId__403A8C7D">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN__EmpresaId__412EB0B6" Association="Self.FK__ASN__EmpresaId__412EB0B6">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN__UsuarioId__4222D4EF" Association="Self.FK__ASN__UsuarioId__4222D4EF">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN_Reimp__ASNId__45F365D3" Association="Self.FK__ASN_Reimp__ASNId__45F365D3">
+            <End Role="ASN" EntitySet="ASN" />
+            <End Role="ASN_Reimpresion" EntitySet="ASN_Reimpresion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASN_Reimp__Usuar__46E78A0C" Association="Self.FK__ASN_Reimp__Usuar__46E78A0C">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="ASN_Reimpresion" EntitySet="ASN_Reimpresion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="corrusys_asnModelStoreContainer" CdmEntityContainer="corrusys_asnEntities">
+          <EntitySetMapping Name="ASN">
+            <EntityTypeMapping TypeName="corrusys_asnModel.ASN">
+              <MappingFragment StoreEntitySet="ASN">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+                <ScalarProperty Name="NumeroFactura" ColumnName="NumeroFactura" />
+                <ScalarProperty Name="DescripcionProducto" ColumnName="DescripcionProducto" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASN_Reimpresion">
+            <EntityTypeMapping TypeName="corrusys_asnModel.ASN_Reimpresion">
+              <MappingFragment StoreEntitySet="ASN_Reimpresion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ASNId" ColumnName="ASNId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="corrusys_asnModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="corrusys_asnModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="corrusys_asnModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

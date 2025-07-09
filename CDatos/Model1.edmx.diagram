@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="099a84b976314de1b8657719c378fb0a" Name="Diagram1">
+        <EntityTypeShape EntityType="corrusys_asnModel.ASN" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="corrusys_asnModel.ASN_Reimpresion" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="corrusys_asnModel.Cliente" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="corrusys_asnModel.Empresa" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="corrusys_asnModel.Usuario" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="corrusys_asnModel.FK__ASN__ClienteId__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="corrusys_asnModel.FK__ASN__EmpresaId__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="corrusys_asnModel.FK__ASN__UsuarioId__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="corrusys_asnModel.FK__ASN_Reimp__ASNId__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="corrusys_asnModel.FK__ASN_Reimp__Usuar__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

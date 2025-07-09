@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corrusys ASN Labeling System", "Corrusys ASN Labeling System\Corrusys ASN Labeling System.csproj", "{154BCDAD-40F2-4256-A43D-45771EE374C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDatos", "CDatos\CDatos.csproj", "{D636F6F0-05A7-4E3A-A133-92B55595696C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLogica", "CLogica\CLogica.csproj", "{4C706254-D12C-46C5-8F2F-2A14E7911992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CEntidades", "CEntidades\CEntidades.csproj", "{F3644C4F-332B-4D2F-9B69-C01340E59C6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{154BCDAD-40F2-4256-A43D-45771EE374C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{154BCDAD-40F2-4256-A43D-45771EE374C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{154BCDAD-40F2-4256-A43D-45771EE374C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{154BCDAD-40F2-4256-A43D-45771EE374C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D636F6F0-05A7-4E3A-A133-92B55595696C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D636F6F0-05A7-4E3A-A133-92B55595696C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D636F6F0-05A7-4E3A-A133-92B55595696C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D636F6F0-05A7-4E3A-A133-92B55595696C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C706254-D12C-46C5-8F2F-2A14E7911992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C706254-D12C-46C5-8F2F-2A14E7911992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C706254-D12C-46C5-8F2F-2A14E7911992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C706254-D12C-46C5-8F2F-2A14E7911992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3644C4F-332B-4D2F-9B69-C01340E59C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3644C4F-332B-4D2F-9B69-C01340E59C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3644C4F-332B-4D2F-9B69-C01340E59C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3644C4F-332B-4D2F-9B69-C01340E59C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
