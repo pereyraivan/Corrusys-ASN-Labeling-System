@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Corrusys_ASN_Labeling_System.Formularios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Corrusys_ASN_Labeling_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmPanelDeControl());
         }
     }
 }

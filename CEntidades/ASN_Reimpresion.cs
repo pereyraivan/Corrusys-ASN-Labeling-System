@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CDatos
+namespace CEntidades
 {
     using System;
     using System.Collections.Generic;

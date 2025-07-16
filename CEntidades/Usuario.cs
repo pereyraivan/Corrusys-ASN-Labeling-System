@@ -7,35 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CDatos
+namespace CEntidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ASN
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ASN()
+        public Usuario()
         {
+            this.ASN = new HashSet<ASN>();
             this.ASN_Reimpresion = new HashSet<ASN_Reimpresion>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> ClienteId { get; set; }
-        public Nullable<int> EmpresaId { get; set; }
-        public int Cantidad { get; set; }
-        public decimal Peso { get; set; }
-        public string Lote { get; set; }
-        public System.DateTime FechaEnvio { get; set; }
-        public string NumeroSerie { get; set; }
-        public string NumeroFactura { get; set; }
-        public string DescripcionProducto { get; set; }
-        public Nullable<int> UsuarioId { get; set; }
-        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string NombreCompleto { get; set; }
+        public string Rol { get; set; }
+        public Nullable<bool> Activo { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
-        public virtual Empresa Empresa { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ASN> ASN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ASN_Reimpresion> ASN_Reimpresion { get; set; }
     }

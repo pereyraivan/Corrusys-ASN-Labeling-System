@@ -7,15 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CDatos
+namespace CEntidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Empresa
+    public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empresa()
+        public Cliente()
         {
             this.ASN = new HashSet<ASN>();
         }
