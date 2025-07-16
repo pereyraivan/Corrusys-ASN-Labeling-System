@@ -143,6 +143,16 @@ namespace Corrusys_ASN_Labeling_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nueva_cuenta__1_ {
+            get {
+                object obj = ResourceManager.GetObject("nueva-cuenta (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap portapapeles {
             get {
                 object obj = ResourceManager.GetObject("portapapeles", resourceCulture);

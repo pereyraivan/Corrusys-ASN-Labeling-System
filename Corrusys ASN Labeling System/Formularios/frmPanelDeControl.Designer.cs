@@ -35,6 +35,7 @@
             this.PanelPanelControl = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnConfigurar = new System.Windows.Forms.Button();
             this.btnASN = new System.Windows.Forms.Button();
@@ -52,7 +53,7 @@
             this.panelFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelFooter.Controls.Add(this.label1);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 666);
+            this.panelFooter.Location = new System.Drawing.Point(0, 772);
             this.panelFooter.Name = "panelFooter";
             this.panelFooter.Size = new System.Drawing.Size(1026, 43);
             this.panelFooter.TabIndex = 0;
@@ -71,6 +72,7 @@
             // panelBotones
             // 
             this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.panelBotones.Controls.Add(this.btnClientes);
             this.panelBotones.Controls.Add(this.label3);
             this.panelBotones.Controls.Add(this.btnSalir);
             this.panelBotones.Controls.Add(this.btnConfigurar);
@@ -81,7 +83,7 @@
             this.panelBotones.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelBotones.Location = new System.Drawing.Point(0, 0);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Size = new System.Drawing.Size(229, 666);
+            this.panelBotones.Size = new System.Drawing.Size(229, 772);
             this.panelBotones.TabIndex = 1;
             // 
             // label3
@@ -90,7 +92,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(62, 623);
+            this.label3.Location = new System.Drawing.Point(62, 729);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 26);
             this.label3.TabIndex = 1;
@@ -122,8 +124,26 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(229, 91);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(797, 575);
+            this.panelContenedor.Size = new System.Drawing.Size(797, 681);
             this.panelContenedor.TabIndex = 3;
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.Font = new System.Drawing.Font("Berlin Sans FB", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.ForeColor = System.Drawing.Color.White;
+            this.btnClientes.Image = global::Corrusys_ASN_Labeling_System.Properties.Resources.nueva_cuenta__1_;
+            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientes.Location = new System.Drawing.Point(-1, 450);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(224, 75);
+            this.btnClientes.TabIndex = 11;
+            this.btnClientes.Text = "     Clientes";
+            this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnSalir
             // 
@@ -136,7 +156,7 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(15, 619);
+            this.btnSalir.Location = new System.Drawing.Point(15, 725);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(43, 35);
             this.btnSalir.TabIndex = 10;
@@ -154,7 +174,7 @@
             this.btnConfigurar.ForeColor = System.Drawing.Color.White;
             this.btnConfigurar.Image = global::Corrusys_ASN_Labeling_System.Properties.Resources.configuraciones;
             this.btnConfigurar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfigurar.Location = new System.Drawing.Point(0, 447);
+            this.btnConfigurar.Location = new System.Drawing.Point(3, 535);
             this.btnConfigurar.Name = "btnConfigurar";
             this.btnConfigurar.Size = new System.Drawing.Size(224, 75);
             this.btnConfigurar.TabIndex = 4;
@@ -172,9 +192,9 @@
             this.btnASN.ForeColor = System.Drawing.Color.White;
             this.btnASN.Image = global::Corrusys_ASN_Labeling_System.Properties.Resources.agregar_notas;
             this.btnASN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnASN.Location = new System.Drawing.Point(0, 363);
+            this.btnASN.Location = new System.Drawing.Point(0, 365);
             this.btnASN.Name = "btnASN";
-            this.btnASN.Size = new System.Drawing.Size(224, 78);
+            this.btnASN.Size = new System.Drawing.Size(224, 75);
             this.btnASN.TabIndex = 3;
             this.btnASN.Text = "   ASN\'s";
             this.btnASN.UseVisualStyleBackColor = true;
@@ -190,9 +210,9 @@
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.Image = global::Corrusys_ASN_Labeling_System.Properties.Resources.bloqueo_de_usuario;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 279);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 280);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(224, 78);
+            this.btnUsuarios.Size = new System.Drawing.Size(224, 75);
             this.btnUsuarios.TabIndex = 2;
             this.btnUsuarios.Text = "      Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = true;
@@ -210,7 +230,7 @@
             this.btnPanel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPanel.Location = new System.Drawing.Point(0, 195);
             this.btnPanel.Name = "btnPanel";
-            this.btnPanel.Size = new System.Drawing.Size(224, 78);
+            this.btnPanel.Size = new System.Drawing.Size(224, 75);
             this.btnPanel.TabIndex = 1;
             this.btnPanel.Text = "   Panel";
             this.btnPanel.UseVisualStyleBackColor = true;
@@ -231,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 709);
+            this.ClientSize = new System.Drawing.Size(1026, 815);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.PanelPanelControl);
             this.Controls.Add(this.panelBotones);
@@ -269,5 +289,6 @@
         private System.Windows.Forms.Button btnConfigurar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnClientes;
     }
 }

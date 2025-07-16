@@ -111,6 +111,10 @@ namespace Corrusys_ASN_Labeling_System.Formularios
             frm.Show();
         }
 
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

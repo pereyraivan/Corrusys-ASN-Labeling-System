@@ -24,6 +24,18 @@ namespace CEntidades
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public string Identificador { get; set; }
+        public string RazonSocial { get; set; }
+        public string RFC { get; set; }
+        public Nullable<int> CodigoPostal { get; set; }
+        public string DomicilioFiscal { get; set; }
+        public string NumeroExt { get; set; }
+        public string Colonia { get; set; }
+        public string Ciudad { get; set; }
+        public string Estado { get; set; }
+        public string Pais { get; set; }
+        public string Telefono { get; set; }
+        public Nullable<int> DUNS { get; set; }
+        public Nullable<int> NumeroProveedor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ASN> ASN { get; set; }

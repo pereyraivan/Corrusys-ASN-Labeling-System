@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="corrusys_asnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="corrusys_asnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ASN">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,9 +45,18 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Direccion" Type="nvarchar" MaxLength="255" />
-          <Property Name="Identificador" Type="nvarchar" MaxLength="50" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RFC" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodigoPostal" Type="int" />
+          <Property Name="DomicilioFiscal" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumeroExt" Type="nchar" MaxLength="20" />
+          <Property Name="Colonia" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="DUNS" Type="int" />
+          <Property Name="NumeroProveedor" Type="int" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -147,8 +156,7 @@
             <End Role="ASN_Reimpresion" EntitySet="ASN_Reimpresion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="corrusys_asnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -203,6 +211,18 @@
           <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ASN" Relationship="Self.FK__ASN__EmpresaId__412EB0B6" FromRole="Empresa" ToRole="ASN" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RFC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoPostal" Type="Int32" />
+          <Property Name="DomicilioFiscal" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroExt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DUNS" Type="Int32" />
+          <Property Name="NumeroProveedor" Type="Int32" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -351,11 +371,20 @@
           <EntitySetMapping Name="Empresa">
             <EntityTypeMapping TypeName="corrusys_asnModel.Empresa">
               <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="NumeroProveedor" ColumnName="NumeroProveedor" />
+                <ScalarProperty Name="DUNS" ColumnName="DUNS" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="NumeroExt" ColumnName="NumeroExt" />
+                <ScalarProperty Name="DomicilioFiscal" ColumnName="DomicilioFiscal" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">

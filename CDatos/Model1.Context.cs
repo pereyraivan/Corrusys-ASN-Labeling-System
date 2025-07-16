@@ -9,7 +9,6 @@
 
 namespace CDatos
 {
-    using CEntidades;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
