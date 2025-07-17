@@ -1,4 +1,6 @@
 ﻿using CEntidades;
+using CEntidades.DTOs;
+using CLogica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,51 +15,83 @@ namespace Corrusys_ASN_Labeling_System.Formularios
 {
     public partial class frmCliente : Form
     {
-        private CLogica.GestorCliente gestor = new CLogica.GestorCliente();
-        public frmCliente()
+        private GestorCliente gestor = new GestorCliente();
+        private Cliente clienteEnEdicion = null;
+        private Action actualizarGrilla;
+        public frmCliente(Action actualizarGrilla)
         {
             InitializeComponent();
+            this.actualizarGrilla = actualizarGrilla;
         }
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
+            
+        }
+      
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (clienteEnEdicion != null)
+                {
+                    EditarCliente();
+                }
+                else
+                {
+                    GuardarCliente();
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void GuardarCliente()
         {
-            // Validar que los campos no tengan los textos por defecto ni estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || txtNombre.Text.Trim() == "Nombre:")
+            ClienteDTO cliente = new ClienteDTO
             {
-                MessageBox.Show("Debe ingresar un nombre válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtDireccion.Text) || txtDireccion.Text.Trim() == "Direccion:")
-            {
-                MessageBox.Show("Debe ingresar una dirección válida.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtIdentificador.Text) || txtIdentificador.Text.Trim() == "Identificados:")
-            {
-                MessageBox.Show("Debe ingresar un identificador válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                Nombre = txtNombre.Text,
+                Direccion = txtDireccion.Text,
+                Identificador = txtIdentificador.Text,
+            };
 
-            try
+            gestor.GuardarCliente(cliente);
+            MessageBox.Show("Cliente guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            actualizarGrilla?.Invoke();
+        }
+        private void EditarCliente()
+        {
+            var cliete = new ClienteDTO
             {
-                var cliente = new CEntidades.Cliente
-                {
-                    Nombre = txtNombre.Text.Trim(),
-                    Direccion = txtDireccion.Text.Trim(),
-                    Identificador = txtIdentificador.Text.Trim()
-                };
-                gestor.GuardarCliente(cliente);
-                MessageBox.Show("Cliente guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpiar();
-            }
-            catch (Exception ex)
+                IdCliente = clienteEnEdicion.Id,
+                Nombre = txtNombre.Text,
+                Direccion = txtDireccion.Text,
+                Identificador = txtIdentificador.Text,
+            };
+
+            gestor.EditarDesdeFormulario(cliete);
+            MessageBox.Show("Cliente editado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            actualizarGrilla?.Invoke();
+        }
+        public void CargarClientesParaEdicion(ClienteDTO cliente)
+        {
+            clienteEnEdicion = new Cliente
             {
-                MessageBox.Show($"Error al guardar el cliente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Id = cliente.IdCliente,
+                Direccion = cliente.Direccion,
+                Identificador = cliente.Identificador,
+
+            };
+
+            if (cliente != null)
+            {
+                txtNombre.Text = cliente.Nombre;
+                txtDireccion.Text = cliente.Direccion;
+                txtIdentificador.Text = cliente.Identificador;
             }
         }
 
@@ -69,14 +103,14 @@ namespace Corrusys_ASN_Labeling_System.Formularios
             txtNombre.Focus();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            GuardarCliente();
-        }
-
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 }

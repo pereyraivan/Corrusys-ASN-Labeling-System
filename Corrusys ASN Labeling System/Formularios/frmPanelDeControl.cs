@@ -82,7 +82,7 @@ namespace Corrusys_ASN_Labeling_System.Formularios
             panelContenedor.Controls.Clear();
 
             // Crear e incrustar el formulario de usuario
-            var frm = new frmASNEnviados();
+            var frm = new frmGrillaASN();
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
@@ -113,7 +113,23 @@ namespace Corrusys_ASN_Labeling_System.Formularios
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            // Cerrar y limpiar formularios previos
+            foreach (Control ctrl in panelContenedor.Controls)
+            {
+                if (ctrl is Form f)
+                {
+                    f.Close();
+                }
+            }
+            panelContenedor.Controls.Clear();
 
+            // Crear e incrustar el formulario de usuario
+            var frm = new frmGrillaCliente();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            panelContenedor.Controls.Add(frm);
+            frm.Show();
         }
     }
 }

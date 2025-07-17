@@ -1,22 +1,29 @@
-﻿using System;
+﻿using CEntidades;
+using CEntidades.DTOs;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CEntidades;
 using System.Data.Entity;
+using System.Linq;
 
 namespace CDatos
 {
     public class RepositorioCliente
     {
-        public List<Cliente> ObtenerTodos()
+        public List<ClienteDTO> ObtenerTodos()
         {
             try
             {
                 using (var db = new corrusys_asnEntities())
                 {
-                    return db.Cliente.ToList();
+                    return db.Cliente
+                        .Select(u => new ClienteDTO
+                        {
+                            IdCliente = u.Id,
+                            Nombre = u.Nombre,
+                            Direccion = u.Direccion,
+                            Identificador = u.Identificador,
+                        })
+                        .ToList();
                 }
             }
             catch (Exception ex)
@@ -77,9 +84,19 @@ namespace CDatos
             {
                 using (var db = new corrusys_asnEntities())
                 {
-                    db.Entry(cliente).State = EntityState.Modified;
+                    var clienteDb = db.Cliente.Find(cliente.Id);
+                    if (clienteDb == null)
+                        throw new InvalidOperationException($"No se encontró el cliente con ID {cliente.Id} para actualizar");
+
+                    clienteDb.Nombre = cliente.Nombre;
+                    clienteDb.Direccion = cliente.Direccion;
+                    clienteDb.Identificador = cliente.Identificador;       
                     db.SaveChanges();
                 }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
@@ -100,6 +117,10 @@ namespace CDatos
                         db.SaveChanges();
                     }
                 }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {

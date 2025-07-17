@@ -62,12 +62,6 @@
     <Compile Include="Formularios\frmASN.Designer.cs">
       <DependentUpon>frmASN.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmASNEnviados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmASNEnviados.Designer.cs">
-      <DependentUpon>frmASNEnviados.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +73,18 @@
     </Compile>
     <Compile Include="Formularios\frmConfigurarEmpresa.Designer.cs">
       <DependentUpon>frmConfigurarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGrillaASN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGrillaASN.Designer.cs">
+      <DependentUpon>frmGrillaASN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGrillaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGrillaCliente.Designer.cs">
+      <DependentUpon>frmGrillaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmGrillaPanel.cs">
       <SubType>Form</SubType>
@@ -115,14 +121,17 @@
     <EmbeddedResource Include="Formularios\frmASN.resx">
       <DependentUpon>frmASN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmASNEnviados.resx">
-      <DependentUpon>frmASNEnviados.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConfigurarEmpresa.resx">
       <DependentUpon>frmConfigurarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGrillaASN.resx">
+      <DependentUpon>frmGrillaASN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGrillaCliente.resx">
+      <DependentUpon>frmGrillaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmGrillaPanel.resx">
       <DependentUpon>frmGrillaPanel.cs</DependentUpon>

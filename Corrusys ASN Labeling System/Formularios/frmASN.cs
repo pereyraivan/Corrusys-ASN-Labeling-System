@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CEntidades;
+using CLogica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,13 @@ namespace Corrusys_ASN_Labeling_System.Formularios
 {
     public partial class frmASN : Form
     {
-        public frmASN()
+        private GestorASN gestor = new GestorASN();
+        private ASN ASNEnEdicion = null;
+        private Action actualizarGrilla;
+        public frmASN(Action actualizarGrilla)
         {
             InitializeComponent();
+            this.actualizarGrilla = actualizarGrilla;
         }
 
         private void lblFechaEstimada_Paint(object sender, PaintEventArgs e)
@@ -95,7 +101,22 @@ namespace Corrusys_ASN_Labeling_System.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (ASNEnEdicion != null)
+                {
+                    //EditarASN();
+                }
+                else
+                {
+                    GuardarASN();
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GuardarASN()
@@ -127,5 +148,11 @@ namespace Corrusys_ASN_Labeling_System.Formularios
                 MessageBox.Show($"Error al guardar el ASN: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }

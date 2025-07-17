@@ -50,6 +50,8 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\ClienteDTO.cs" />
+    <Compile Include="DTOs\UsuarioDTO.cs" />
     <Compile Include="Empresa.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -9,6 +9,7 @@
 
 namespace CDatos
 {
+    using CEntidades;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -28,7 +29,7 @@ namespace CDatos
         public virtual DbSet<ASN> ASN { get; set; }
         public virtual DbSet<ASN_Reimpresion> ASN_Reimpresion { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Empresa> Empresa { get; set; }
     }
 }

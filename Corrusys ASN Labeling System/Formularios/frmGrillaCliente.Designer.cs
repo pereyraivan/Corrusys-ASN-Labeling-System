@@ -1,6 +1,6 @@
 ﻿namespace Corrusys_ASN_Labeling_System.Formularios
 {
-    partial class frmGrillaUsuario
+    partial class frmGrillaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvUsuarios
-            // 
-            this.dgvUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(26, 84);
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(828, 447);
-            this.dgvUsuarios.TabIndex = 0;
-            this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(30, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 26);
-            this.label4.TabIndex = 12;
-            this.label4.Tag = "";
-            this.label4.Text = "Usuarios";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // btnNuevoUsuario
             // 
@@ -69,28 +43,53 @@
             this.btnNuevoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoUsuario.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoUsuario.ForeColor = System.Drawing.Color.White;
-            this.btnNuevoUsuario.Location = new System.Drawing.Point(621, 559);
+            this.btnNuevoUsuario.Location = new System.Drawing.Point(612, 534);
             this.btnNuevoUsuario.Name = "btnNuevoUsuario";
             this.btnNuevoUsuario.Size = new System.Drawing.Size(233, 33);
-            this.btnNuevoUsuario.TabIndex = 23;
-            this.btnNuevoUsuario.Text = "Nuevo usuario";
+            this.btnNuevoUsuario.TabIndex = 26;
+            this.btnNuevoUsuario.Text = "Nuevo cliente";
             this.btnNuevoUsuario.UseVisualStyleBackColor = false;
             this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
-            // frmGrillaUsuario
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(21, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 26);
+            this.label4.TabIndex = 25;
+            this.label4.Tag = "";
+            this.label4.Text = "Clientes";
+            // 
+            // dgvClientes
+            // 
+            this.dgvClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Location = new System.Drawing.Point(17, 67);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(828, 447);
+            this.dgvClientes.TabIndex = 24;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
+            // 
+            // frmGrillaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(879, 629);
+            this.ClientSize = new System.Drawing.Size(863, 590);
             this.Controls.Add(this.btnNuevoUsuario);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dgvUsuarios);
+            this.Controls.Add(this.dgvClientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmGrillaUsuario";
-            this.Text = "frmGrillaUsuario";
-            this.Load += new System.EventHandler(this.frmGrillaUsuario_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            this.Name = "frmGrillaCliente";
+            this.Text = "frmGrillaCliente";
+            this.Load += new System.EventHandler(this.frmGrillaCliente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,8 +97,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvUsuarios;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnNuevoUsuario;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvClientes;
     }
 }

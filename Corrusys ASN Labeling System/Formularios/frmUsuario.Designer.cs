@@ -117,6 +117,7 @@
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalir
             // 
@@ -150,7 +151,6 @@
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUsuario";
-            this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

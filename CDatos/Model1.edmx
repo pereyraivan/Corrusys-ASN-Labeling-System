@@ -177,9 +177,9 @@
           <Property Name="UsuarioId" Type="Int32" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK__ASN__ClienteId__403A8C7D" FromRole="ASN" ToRole="Cliente" />
-          <NavigationProperty Name="Empresa" Relationship="Self.FK__ASN__EmpresaId__412EB0B6" FromRole="ASN" ToRole="Empresa" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__ASN__UsuarioId__4222D4EF" FromRole="ASN" ToRole="Usuario" />
           <NavigationProperty Name="ASN_Reimpresion" Relationship="Self.FK__ASN_Reimp__ASNId__45F365D3" FromRole="ASN" ToRole="ASN_Reimpresion" />
+          <NavigationProperty Name="Empresa" Relationship="corrusys_asnModel.FK__ASN__EmpresaId__412EB0B6" FromRole="ASN" ToRole="Empresa" />
         </EntityType>
         <EntityType Name="ASN_Reimpresion">
           <Key>
@@ -201,28 +201,6 @@
           <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ASN" Relationship="Self.FK__ASN__ClienteId__403A8C7D" FromRole="Cliente" ToRole="ASN" />
-        </EntityType>
-        <EntityType Name="Empresa">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ASN" Relationship="Self.FK__ASN__EmpresaId__412EB0B6" FromRole="Empresa" ToRole="ASN" />
-          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RFC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CodigoPostal" Type="Int32" />
-          <Property Name="DomicilioFiscal" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="NumeroExt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="DUNS" Type="Int32" />
-          <Property Name="NumeroProveedor" Type="Int32" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -246,18 +224,6 @@
             </Principal>
             <Dependent Role="ASN">
               <PropertyRef Name="ClienteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ASN__EmpresaId__412EB0B6">
-          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
-          <End Role="ASN" Type="Self.ASN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresa">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ASN">
-              <PropertyRef Name="EmpresaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -301,14 +267,9 @@
           <EntitySet Name="ASN" EntityType="Self.ASN" />
           <EntitySet Name="ASN_Reimpresion" EntityType="Self.ASN_Reimpresion" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
-          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="FK__ASN__ClienteId__403A8C7D" Association="Self.FK__ASN__ClienteId__403A8C7D">
             <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="ASN" EntitySet="ASN" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ASN__EmpresaId__412EB0B6" Association="Self.FK__ASN__EmpresaId__412EB0B6">
-            <End Role="Empresa" EntitySet="Empresa" />
             <End Role="ASN" EntitySet="ASN" />
           </AssociationSet>
           <AssociationSet Name="FK__ASN__UsuarioId__4222D4EF" Association="Self.FK__ASN__UsuarioId__4222D4EF">
@@ -323,7 +284,43 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="ASN_Reimpresion" EntitySet="ASN_Reimpresion" />
           </AssociationSet>
+          <EntitySet Name="Empresa" EntityType="corrusys_asnModel.Empresa" />
+          <AssociationSet Name="FK__ASN__EmpresaId__412EB0B6" Association="corrusys_asnModel.FK__ASN__EmpresaId__412EB0B6">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="ASN" EntitySet="ASN" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RFC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoPostal" Type="Int32" />
+          <Property Name="DomicilioFiscal" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroExt" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DUNS" Type="Int32" />
+          <Property Name="NumeroProveedor" Type="Int32" />
+          <NavigationProperty Name="ASN" Relationship="corrusys_asnModel.FK__ASN__EmpresaId__412EB0B6" FromRole="Empresa" ToRole="ASN" />
+        </EntityType>
+        <Association Name="FK__ASN__EmpresaId__412EB0B6">
+          <End Type="corrusys_asnModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="corrusys_asnModel.ASN" Role="ASN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ASN">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -368,6 +365,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="corrusys_asnModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Empresa">
             <EntityTypeMapping TypeName="corrusys_asnModel.Empresa">
               <MappingFragment StoreEntitySet="Empresa">
@@ -384,18 +393,6 @@
                 <ScalarProperty Name="RFC" ColumnName="RFC" />
                 <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="corrusys_asnModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-                <ScalarProperty Name="Rol" ColumnName="Rol" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

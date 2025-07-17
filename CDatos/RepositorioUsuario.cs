@@ -2,18 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using CEntidades;
+using CEntidades.DTOs;
 
 namespace CDatos
 {
     public class RepositorioUsuario
     {
-        public List<Usuario> ObtenerTodos()
+        public List<UsuarioDTO> ObtenerTodos()
         {
             try
             {
                 using (var db = new corrusys_asnEntities())
                 {
-                    return db.Usuario.ToList();
+                    return db.Usuario
+                        .Select(u => new UsuarioDTO
+                        {
+                            Id = u.Id,
+                            NombreCompleto = u.NombreCompleto,
+                            Usuario = u.Username,
+                            Puesto = u.Rol,
+                            Contraseña = u.PasswordHash
+                        })
+                        .ToList();
                 }
             }
             catch (Exception ex)
@@ -28,12 +38,19 @@ namespace CDatos
             {
                 using (var db = new corrusys_asnEntities())
                 {
-                    return db.Usuario.Find(id);
+                    var usuario = db.Usuario.Find(id);
+                    if (usuario == null)
+                        throw new InvalidOperationException($"No se encontró el usuario con ID {id}");
+                    return usuario;
                 }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener el usuario por ID de la base de datos.", ex);
+                throw new Exception($"Error al obtener el usuario con ID {id} de la base de datos.", ex);
             }
         }
 
@@ -43,12 +60,19 @@ namespace CDatos
             {
                 using (var db = new corrusys_asnEntities())
                 {
-                    return db.Usuario.FirstOrDefault(u => u.Username == username);
+                    var usuario = db.Usuario.FirstOrDefault(u => u.Username == username);
+                    if (usuario == null)
+                        throw new InvalidOperationException($"No se encontró el usuario con nombre de usuario {username}");
+                    return usuario;
                 }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener el usuario por nombre de usuario de la base de datos.", ex);
+                throw new Exception($"Error al obtener el usuario por nombre de usuario de la base de datos.", ex);
             }
         }
 
@@ -74,9 +98,22 @@ namespace CDatos
             {
                 using (var db = new corrusys_asnEntities())
                 {
-                    db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                    var usuarioDb = db.Usuario.Find(usuario.Id);
+                    if (usuarioDb == null)
+                        throw new InvalidOperationException($"No se encontró el usuario con ID {usuario.Id} para actualizar");
+
+                    usuarioDb.NombreCompleto = usuario.NombreCompleto;
+                    usuarioDb.Rol = usuario.Rol;
+                    usuarioDb.Username = usuario.Username;
+                    usuarioDb.PasswordHash = usuario.PasswordHash;
+                    usuarioDb.Activo = usuario.Activo;
+
                     db.SaveChanges();
                 }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
@@ -91,12 +128,16 @@ namespace CDatos
                 using (var db = new corrusys_asnEntities())
                 {
                     var usuario = db.Usuario.Find(id);
-                    if (usuario != null)
-                    {
-                        db.Usuario.Remove(usuario);
-                        db.SaveChanges();
-                    }
+                    if (usuario == null)
+                        throw new InvalidOperationException($"No se encontró el usuario con ID {id} para eliminar");
+
+                    db.Usuario.Remove(usuario);
+                    db.SaveChanges();
                 }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {

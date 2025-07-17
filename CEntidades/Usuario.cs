@@ -20,7 +20,7 @@ namespace CEntidades
             this.ASN = new HashSet<ASN>();
             this.ASN_Reimpresion = new HashSet<ASN_Reimpresion>();
         }
-    
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
@@ -28,9 +28,8 @@ namespace CEntidades
         public string Rol { get; set; }
         public Nullable<bool> Activo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+       
         public virtual ICollection<ASN> ASN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ASN_Reimpresion> ASN_Reimpresion { get; set; }
     }
 }
